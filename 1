@@ -1,27 +1,19 @@
 #include <iostream>
 using namespace std;
 int main()
-{	int *n;
-	n = new int;
+{	int n, i, j, k, s=0, aux;
+	int *m;
 	int **v;
 	int *f;
-	int *i;
-	i = new int;
-	int *j;
-	j = new int;
-	int *k;
-	k = new int;
-	int *s;
-	s = new int;
-	int *aux;
-	aux = new int;
+	
 	cin>>n;
-	int *m = new int(n);
+	m = new int(n);
+	v = new int* [n];
 	for(i=0; i<n; i++)
 	{
 		cin>>m[i];
 		s+= m[i];
-		v[i] = new int* (m[i]);
+		v[i] = new int* [m[i]];
 		for(j=0; j<m[i]; j++)
 		cin>>v[i][j];
 	}
@@ -34,26 +26,23 @@ int main()
 			k++;
 		}
 	}
-	delete k;
-	delete n;
+	
 	delete[] m;
 	delete[] v;
 	for (i=0; i<s; i++)
 	{	for(j=i+1; j<s; j++)
 		{	if(f[i]>f[j])
-			aux = f[i];
-			f[i] = f[j];
-			f[j] = aux;
+			{	aux = f[i];
+				f[i] = f[j];
+				f[j] = aux;
+			}
 		}
 	}
-	delete aux;
-	delete j;
-	for(i=0; i<s; i++)
-	cout<<f[i];
 	
-	delete i;
+	for(i=0; i<s; i++)
+	cout<<f[i]<<endl;
+	
 	delete[] f;
-	delete s;
 
 system ("pause");
 return 0;

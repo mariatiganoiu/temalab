@@ -49,6 +49,7 @@ int main()
 		//altfel nu ar mai fi gasit urmatorul maxim
 		m = 0;
 	}
+	delete[] v;
 	system("pause");
 	return 0;
 }

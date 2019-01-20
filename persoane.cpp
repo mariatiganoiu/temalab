@@ -23,7 +23,7 @@ public:
 	void anote(int *v, int n)
 	{
 		int i;
-		if((n==0)||(note==NULL))
+		if(note==NULL)
 		{
         	this->n = n;
 		note = new int[n];

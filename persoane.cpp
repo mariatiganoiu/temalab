@@ -16,7 +16,7 @@ public:
 	{
 		if(nume==NULL)
 		{
-        nume = new char[strlen(n) + 1];
+        	nume = new char[strlen(n) + 1];
 		strcpy(nume, n);
 		}
 	}
@@ -25,7 +25,7 @@ public:
 		int i;
 		if((n==0)||(note==NULL))
 		{
-        this->n = n;
+        	this->n = n;
 		note = new int[n];
 		for (i = 0; i < n; i++)
 			note[i] = v[i];
@@ -35,9 +35,12 @@ public:
 	{
 		int i;
 		float medie=0;
+		if(note!=NULL)
+		{
 		for (i = 0; i < this->n; i++)
 			medie += this->note[i];
 		cout << this->nume << " are media " << medie / n << endl;
+		}
 	}
 };
 int main()
@@ -46,13 +49,13 @@ int main()
 	int *v, n, i;
 	char nume[20];
 	cin >> nume;
-    x.anume(nume);
+    	x.anume(nume);
 
-    cin >> n;
-    v = new int[n];
-    for (i = 0; i < n; i++)
+	cin >> n;
+	v = new int[n];
+	for (i = 0; i < n; i++)
         cin >> v[i];
-    x.anote(v, n);
-    x.medie();
+	x.anote(v, n);
+	x.medie();
 	return 0;
 }

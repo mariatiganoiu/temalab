@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Array
+{
+	int d;
+	T *a;
+	public:
+	Array(int s)
+	{
+		d = s;
+		a = new T[s];
+	}
+	~Array() 
+	{
+		if(a)
+		{
+			delete[] a; // Freeing memory
+			a = NULL;
+		}
+	}
+	T operator[](int i)
+	{
+	return a[i];
+	}
+	void setArray(int pos, T val)
+	{
+		a[pos] = val;
+	}
+	T sum()
+	{
+		T s;
+		s = a[0];
+		for (int i = 1; i< d; i++)
+		{
+			s += a[i];
+		}
+		return s;
+	}
+};
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	Array<int> x(n);
+	int c;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> c;
+		x.setArray(i, c);
+	}
+	cout << x.sum() << endl;
+	system("pause");
+	return 0;
+}

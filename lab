@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-template <class T>
+template <typename T>
 class Array
 {
 	int d;

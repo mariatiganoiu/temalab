@@ -1,22 +1,22 @@
 #include <iostream>
 using namespace std;
 
-template <typename T>
+template <class T>
 class Array
 {
 	int d;
 	T *a;
-	public:
+public:
 	Array(int s)
 	{
 		d = s;
 		a = new T[s];
 	}
-	~Array() 
+	~Array()
 	{
-		if(a)
+		if (a)
 		{
-			delete[] a; // Freeing memory
+			delete[] a;
 			a = NULL;
 		}
 	}
@@ -28,31 +28,54 @@ class Array
 	{
 		a[pos] = val;
 	}
-	T sum()
+	T* sum()
 	{
 		T s;
 		s = a[0];
-		for (int i = 1; i< d; i++)
+		for (int i = 1; i < d; i++)
 		{
 			s += a[i];
 		}
-		return s;
+		return &s;
 	}
 };
 
+	template<>
+	char* Array<char>::sum()
+	{
+		char *r;
+		r = new char[d + 1];
+		for (int i = 0; i < d; i++)
+		{
+			r[i] = a[i];
+		}
+		r[d] = '\0';
+		return r;
+	}
 
 int main()
 {
-	int n;
+	int n, m, nr;
+	char c;
+	//pentru numere intregi
+	cin >> m;
+	Array<int> x(m);
+	for (int i = 0; i < m; i++)
+	{
+		cin >> nr;
+		x.setArray(i, nr);
+	}
+	cout << *(x.sum()) << endl;
+
+	//pentru caractere
 	cin >> n;
-	Array<int> x(n);
-	int c;
+	Array<char> y(n);
 	for (int i = 0; i < n; i++)
 	{
 		cin >> c;
-		x.setArray(i, c);
+		y.setArray(i, c);
 	}
-	cout << x.sum() << endl;
+	cout << y.sum() << endl;
 	system("pause");
 	return 0;
 }

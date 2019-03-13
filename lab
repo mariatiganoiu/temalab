@@ -22,7 +22,7 @@ class Array
 	}
 	T operator[](int i)
 	{
-	return a[i];
+		return a[i];
 	}
 	void setArray(int pos, T val)
 	{
